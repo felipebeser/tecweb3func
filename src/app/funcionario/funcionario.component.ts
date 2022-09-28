@@ -6,16 +6,19 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./funcionario.component.css']
 })
 export class FuncionarioComponent implements OnInit {
+  id! : number;
   @Input() nome!: String;
   @Input() isMasculino!: boolean;
   @Input() idade!: number;
-  isLogado: boolean = false;
+  isLogado!: boolean;
+
+  @Input() tipoFuncionario: string = "Administrador";
+
   constructor() {
 
   }
 
   ngOnInit(): void {
-    console.log("Teste on init")
   }
 
 }

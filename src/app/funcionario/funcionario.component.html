@@ -1,11 +1,15 @@
-<div class="container">
-    <div class="card">
-        <div class="card-header bg-primary text-white">
-            Nome: {{nome}}<br> 
+<div class="card col-md-6">
+    <div class="card-header bg-primary text-white">
+        {{nome}}<br> 
+        
+    </div>
+    <div class="card-body">
+        <div>
             Sexo Masculino: {{isMasculino}}<br>
             Idade: {{idade}}
         </div>
-        
+
+
         <div *ngIf="isMasculino; else feminino">
             Masculino
         </div>
@@ -14,25 +18,43 @@
             Feminino
         </ng-template>
 
-        <div *ngIf="!isMasculino && idade == 40">
-            Você é experiente.
-        </div>
+    </div>
+    
+   
 
-        <!-- <ng-template [ngIf]="isLogado" [ngIfElse]="userLoggedOut">
-            Bem-vindo! Você está logado.
-        </ng-template>
+    <div class="card-footer" *ngIf="!isMasculino && idade == 40">
+        Você é experiente.
+    </div>
 
-        <ng-template #userLoggedOut>
-            Você não está logado.
-        </ng-template> -->
+    <!-- <ng-template [ngIf]="isLogado" [ngIfElse]="userLoggedOut">
+        Bem-vindo! Você está logado.
+    </ng-template>
 
-        <div [hidden]="isLogado">
-            Bem-vindo! Você está logado.
-        </div>
+    <ng-template #userLoggedOut>
+        Você não está logado.
+    </ng-template> -->
 
-        <div [hidden]="!isLogado">
-            Por favor, faça o login.
-        </div>
+    <div [hidden]="isLogado">
+        Bem-vindo! Você está logado.
+    </div>
 
+    <div [hidden]="!isLogado">
+        Por favor, faça o login.
+    </div>
+
+</div>
+
+<div [ngSwitch]="tipoFuncionario">
+    <div *ngSwitchCase="'Administrador'">
+        Você é um administrador.
+    </div>
+    <div *ngSwitchCase="'Gerente'">
+        Você é um gerente.
+    </div>
+    <div *ngSwitchCase="'Vendedor'">
+        Você é um vendedor.
+    </div>
+    <div *ngSwitchDefault>
+        Você é um usuário.
     </div>
 </div>
